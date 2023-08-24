@@ -1,0 +1,8 @@
+/* Clerk.js */
+
+#settings-page .cl-rootBox {
+  @apply w-full;
+}
+#settings-page .cl-card {
+  @apply w-full sm:mx-0;
+}

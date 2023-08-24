@@ -5,7 +5,7 @@ import Playground from "@/lib/generator/components/playground";
 
 const DashboardPage = () => {
   return (
-    <main className="sm:container h-full space-y-8">
+    <main className="sm:container space-y-8" id="generator-page">
       <PromptCard className="w-full !rounded-xl shadow" />
       <Playground />
     </main>

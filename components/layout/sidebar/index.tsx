@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "flex flex-col gap-8 w-80 max-w-[85%] h-full py-8 px-4 duration-75 bg-background",
+        "flex flex-col gap-8 w-80 max-w-[85%] h-full py-8 px-4 duration-75 bg-background z-10",
         !isOpen && "max-md:hidden md:w-min",
         isSmallScreen && "absolute top-0 left-0 shadow"
       )}
