@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 
 import {
@@ -19,12 +19,10 @@ type PromptCardProps = React.HTMLAttributes<HTMLDivElement> & {};
 
 const PromptCard = ({ className, ...props }: PromptCardProps) => {
   const { onSubmitPrompt, isLoading } = useGenerator();
-  const [prompt, setPrompt] = useState("");
-
-  console.log("loading is here... ", isLoading);
+  const promptInput = useRef<HTMLTextAreaElement>(null);
 
   const submitPrompt = () => {
-    if (!!prompt) onSubmitPrompt(prompt);
+    if (promptInput.current?.value) onSubmitPrompt(promptInput.current.value);
   };
 
   return (
@@ -35,11 +33,7 @@ const PromptCard = ({ className, ...props }: PromptCardProps) => {
           <CardDescription>What do you wanna build today!</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col sm:flex-row gap-4 items-end">
-          <Textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Type your prompt here!"
-          />
+          <Textarea ref={promptInput} placeholder="Type your prompt here!" />
           <Button onClick={submitPrompt} disabled={isLoading} className="w-max">
             Generate
           </Button>

@@ -1,16 +1,21 @@
 import { create } from "zustand";
 
-type TPlayground = {
-  id: string;
-  title: string;
-  colors: Record<string, string[]>;
-} | null;
-
 type TGenerator = {
   prompt: string;
   playground: TPlayground;
   isLoading: boolean;
   onSubmitPrompt: (prompt: string) => void;
+};
+
+type TPlayground = {
+  paletteId: string;
+  paletteName: string;
+  colors: TColor[];
+} | null;
+
+type TColor = {
+  name: string;
+  shades: Record<string, string[]>;
 };
 
 const useGenerator = create<TGenerator>((set) => ({

@@ -1,0 +1,8 @@
+export enum MEMBERSHIP_PLANS {
+  BASIC = "Basic",
+  PREMIUM = "Premium",
+}
+
+export const DEFAULT_PLAN = MEMBERSHIP_PLANS.BASIC;
+
+export const PLANS = [MEMBERSHIP_PLANS.BASIC, MEMBERSHIP_PLANS.PREMIUM];

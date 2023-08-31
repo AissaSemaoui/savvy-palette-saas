@@ -11,7 +11,7 @@ import { ColorPicker, Settings } from "@/assets/icons";
 import { cn } from "@/lib/utils";
 import { isScreenSmallerThan } from "@/lib/theme";
 import { CLIENT_URLS } from "@/config/urls";
-import { useThemeContext } from "@/providers/theme-provider";
+import { useThemeContext } from "@/components/providers/theme.provider";
 
 import { useSidebarStore } from "@/components/layout/sidebar/sidebar.store";
 import SidebarItem, { SidebarItemData } from "./sidebar-item";
