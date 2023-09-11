@@ -1,5 +1,6 @@
-import { MONGO_URI } from "@/environments";
 import mongoose from "mongoose";
+
+import { MONGO_URI } from "@/environments";
 
 let cachedDb: typeof mongoose | null = null;
 

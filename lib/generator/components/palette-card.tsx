@@ -8,16 +8,22 @@ import { cn } from "@/lib/utils";
 
 import ColorBox from "./color-box";
 
-type PaletteCardProps = HTMLAttributes<HTMLDivElement>;
+type PaletteCardProps = HTMLAttributes<HTMLDivElement> & {
+  name: string;
+  colors: Record<string, string>;
+};
 
-const PaletteCard = ({ className }: PaletteCardProps) => {
+const PaletteCard = ({ className, name, colors }: PaletteCardProps) => {
+  const { DEFAULT, ...shades } = colors;
+  const colorsHex = Object.values(shades);
+
   return (
     <Card className={cn("shadow-none", className)}>
       <CardHeader className="flex-row flex-wrap items-end gap-4 p-6">
-        <ColorBox size="lg" />
+        <ColorBox colorHex={DEFAULT} size="lg" />
         <div className="space-y-2">
           <h3 className="text-base md:text-xl text-secondary-foreground font-medium">
-            #545640bg
+            {name}
           </h3>
           <Input placeholder="Color name" className="w-full text-lg" />
         </div>
@@ -35,17 +41,9 @@ const PaletteCard = ({ className }: PaletteCardProps) => {
         </div>
       </CardHeader>
       <CardContent className="grid grid-cols-[repeat(auto-fit,minmax(36px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-2 p-6 pt-0">
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
-        <ColorBox tooltipContent="Red-100" />
+        {colorsHex.map((hex) => (
+          <ColorBox tooltipContent="Red-100" colorHex={hex} />
+        ))}
       </CardContent>
     </Card>
   );

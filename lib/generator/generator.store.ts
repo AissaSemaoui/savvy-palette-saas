@@ -22,7 +22,9 @@ const useGenerator = create<TGenerator>((set) => ({
   prompt: "",
   playground: null,
   isLoading: false,
-  onSubmitPrompt: (prompt) => {},
+  onSubmitPrompt: (prompt) => {
+    set({ prompt });
+  },
 }));
 
 export { useGenerator };
