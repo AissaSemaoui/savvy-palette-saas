@@ -2,8 +2,8 @@
 
 import React, { useMemo } from "react";
 import { SignOutButton } from "@clerk/nextjs";
-import { LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { LogOutIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -11,10 +11,10 @@ import { ColorPicker, Settings } from "@/assets/icons";
 import { cn } from "@/lib/utils";
 import { isScreenSmallerThan } from "@/lib/theme";
 import { CLIENT_URLS } from "@/config/urls";
-import { useThemeContext } from "@/providers/theme-provider";
+import { useThemeContext } from "@/components/providers/theme.provider";
 
+import { useSidebarStore } from "@/components/layout/sidebar/sidebar.store";
 import SidebarItem, { SidebarItemData } from "./sidebar-item";
-import { useSidebarStore } from "./sidebar.store";
 
 const SIDEBAR_ITEMS: SidebarItemData[] = [
   { label: "Dashboard", href: CLIENT_URLS.dashboard, icon: ColorPicker },
@@ -33,9 +33,9 @@ const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "flex flex-col gap-8 w-80 max-w-[85%] h-full py-8 px-4 duration-75 bg-background",
+        "flex flex-col gap-8 w-80 max-w-[85%] h-full py-8 px-4 duration-75 bg-background z-10",
         !isOpen && "max-md:hidden md:w-min",
-        isSmallScreen && "absolute top-0 left-0"
+        isSmallScreen && "absolute top-0 left-0 shadow"
       )}
     >
       <nav className="flex-1 space-y-4 mt-8">
@@ -57,7 +57,7 @@ const Sidebar = () => {
           <Button
             variant="outline"
             compact={!isOpen}
-            icon={<LogOut className={cn(isOpen && "mr-2")} size={18} />}
+            icon={<LogOutIcon className={cn(isOpen && "mr-2")} size={18} />}
           >
             <span>Sign Out</span>
           </Button>

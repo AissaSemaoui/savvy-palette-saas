@@ -2,7 +2,7 @@
 
 import React from "react";
 import { UserButton } from "@clerk/nextjs";
-import { Bell, Menu, Moon, Sun, X } from "lucide-react";
+import { BellIcon, MenuIcon, MoonIcon, SunIcon, XIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import Logo from "@/components/logo";
@@ -39,7 +39,7 @@ const Navbar = ({ className }: { className?: string }) => {
             variant={isSidebarOpen ? "secondary" : "outline"}
             onClick={toggleSidebar}
           >
-            {isSidebarOpen ? <X /> : <Menu />}
+            {isSidebarOpen ? <XIcon /> : <MenuIcon />}
           </Button>
 
           <Button
@@ -48,7 +48,7 @@ const Navbar = ({ className }: { className?: string }) => {
             variant="secondary"
             onClick={toggleDarkMode}
           >
-            {isDarkMode ? <Sun /> : <Moon />}
+            {isDarkMode ? <SunIcon /> : <MoonIcon />}
           </Button>
         </div>
 
@@ -56,7 +56,7 @@ const Navbar = ({ className }: { className?: string }) => {
           <Button className="max-sm:hidden">Start Generating</Button>
 
           <Button size="icon" radius="full" variant="outline">
-            <Bell />
+            <BellIcon />
           </Button>
 
           <UserButton showName={false} afterSignOutUrl={CLIENT_URLS.landing} />
