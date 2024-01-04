@@ -42,7 +42,7 @@ const PaletteCard = ({ className, name, colors }: PaletteCardProps) => {
       </CardHeader>
       <CardContent className="grid grid-cols-[repeat(auto-fit,minmax(36px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-2 p-6 pt-0">
         {colorsHex.map((hex) => (
-          <ColorBox tooltipContent="Red-100" colorHex={hex} />
+          <ColorBox key={hex} tooltipContent="Red-100" colorHex={hex} />
         ))}
       </CardContent>
     </Card>
