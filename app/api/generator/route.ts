@@ -1,6 +1,7 @@
 import { connectToDatabase } from "@/server/utils/db";
 import { openai } from "@/services/openai";
 import { auth, currentUser } from "@clerk/nextjs";
+import { NextResponse } from "next/server";
 
 connectToDatabase();
 
@@ -25,7 +26,7 @@ export async function POST(req: Request, ctx: any) {
         },
       ],
       temperature: 1,
-      max_tokens: 1000,
+      max_tokens: 2000,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
@@ -39,7 +40,7 @@ export async function POST(req: Request, ctx: any) {
     console.log(response);
     console.log(response.choices[0].message.content);
 
-    return Response.json(
+    return NextResponse.json(
       {
         palette: response.choices[0].message.content,
       },
@@ -49,7 +50,7 @@ export async function POST(req: Request, ctx: any) {
     );
   } catch (error) {
     console.log(error);
-    return Response.json(
+    return NextResponse.json(
       {
         message: "Ops failed generating the color palette",
       },
