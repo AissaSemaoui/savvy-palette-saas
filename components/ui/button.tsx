@@ -87,16 +87,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             className={cn(buttonVariants({ variant, size, radius, className }))}
             ref={ref}
             {...props}
-            children={
-              isIconExist ? (
-                <>
-                  {Icon} {!compact && children}
-                </>
-              ) : (
-                children
-              )
-            }
-          />
+          >
+            {isIconExist ? (
+              <>
+                {Icon} {!compact && children}
+              </>
+            ) : (
+              children
+            )}
+          </Comp>
         </TooltipTrigger>
         {tooltipContent && <TooltipContent>{tooltipContent}</TooltipContent>}
       </Tooltip>

@@ -10,7 +10,9 @@ const Home = () => {
         This is just the landing page (Unprotected)
       </h1>
       <SignIn />
-      <Button children={<Link href="/dashboard">Go to the dashboard</Link>} />
+      <Button>
+        <Link href="/dashboard">Go to the dashboard</Link>
+      </Button>
     </main>
   );
 };

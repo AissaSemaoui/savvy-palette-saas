@@ -31,11 +31,11 @@ const Playground = ({ className, ...props }: PlaygroundProps) => {
 
   useEffect(() => {
     if (!!prompt) mutate(prompt);
-  }, [prompt]);
+  }, [prompt, mutate]);
 
   console.log("Yayy we got the data : ", data?.palette);
 
-  if (isLoading) return <h1>It's loading...</h1>;
+  if (isLoading) return <h1>It&apos;s loading...</h1>;
 
   if (isError) return <h1>Ops we got an error</h1>;
 
@@ -54,7 +54,11 @@ const Playground = ({ className, ...props }: PlaygroundProps) => {
       </CardHeader>
       <CardContent className="px-0">
         {paletteArray.map(([name, colors]) => (
-          <PaletteCard name={name} colors={colors as Record<string, string>} />
+          <PaletteCard
+            key={name}
+            name={name}
+            colors={colors as Record<string, string>}
+          />
         ))}
       </CardContent>
     </section>
